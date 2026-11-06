@@ -1,0 +1,82 @@
+---
+import DownloadIcon from '@robin-build/landing-kit/components/DownloadIcon.astro';
+import Faq from '@robin-build/landing-kit/components/Faq.astro';
+import Features from '@robin-build/landing-kit/components/Features.astro';
+import Stats from '@robin-build/landing-kit/components/Stats.astro';
+import Site from '../layouts/Site.astro';
+---
+
+<Site>
+  <main id="main">
+    <section class="hero">
+      <span class="eyebrow">
+        <span class="dot"></span> A little app for your Mac
+      </span>
+      <h1>
+        Big promise. <em>Small app.</em>
+      </h1>
+      <p class="intro">One or two lines about what it does for you.</p>
+      <div class="actions">
+        <a class="button primary" href="/download">
+          <DownloadIcon />
+          Download for Mac
+        </a>
+        <a class="text-link" href="#features">
+          See what it does
+        </a>
+      </div>
+      <p class="small">Free & open source · macOS 15+</p>
+    </section>
+
+    <section class="stats" aria-label="At a glance">
+      <span class="eyebrow">At a glance</span>
+      <h2>
+        A headline <em>with a twist.</em>
+      </h2>
+      <Stats
+        items={[
+          { value: '1', label: 'Something worth counting' },
+          { value: '2', label: 'Something else worth counting' },
+          { value: '3', label: 'A third thing' },
+          { value: '0', label: 'Accounts or analytics' },
+        ]}
+      />
+    </section>
+
+    <section id="features" class="how">
+      <div class="center">
+        <span class="eyebrow">How it works</span>
+        <h2>
+          Explain it <em>in one line.</em>
+        </h2>
+        <p>A sentence that expands on it.</p>
+      </div>
+      <Features
+        items={[
+          { tag: '01 / One', title: 'First thing.', text: 'Why it matters.' },
+          { tag: '02 / Two', title: 'Second thing.', text: 'Why it matters.' },
+        ]}
+      />
+    </section>
+
+    <section class="faq">
+      <h2>Questions.</h2>
+      <Faq
+        items={[{ q: 'Is it free?', a: 'Yes, and open source.' }]}
+        openFirst
+      />
+    </section>
+
+    <section class="install">
+      <h2>
+        Closing line <br />
+        <em>that lands.</em>
+      </h2>
+      <a class="button primary" href="/download">
+        <DownloadIcon />
+        Download Example
+      </a>
+      <p class="small">No account. No analytics.</p>
+    </section>
+  </main>
+</Site>

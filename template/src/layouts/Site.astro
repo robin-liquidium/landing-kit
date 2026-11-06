@@ -1,0 +1,36 @@
+---
+// Everything that makes this site this site. Pages use <Site> instead of <Page>.
+import Page from '@robin-build/landing-kit/Page.astro';
+import type { Site } from '@robin-build/landing-kit/projects';
+import '@robin-build/landing-kit/design.css';
+import '../styles/site.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const repo = 'https://github.com/robin-liquidium/example';
+const site: Site = {
+  id: 'example',
+  name: 'Example',
+  icon: '/icon.png',
+  themeColor: { light: '#f6f5f1', dark: '#0c1018' },
+  nav: [
+    { label: 'Changelog', href: '/changelog' },
+    { label: 'GitHub', href: repo },
+  ],
+  footerLinks: [
+    { label: 'Privacy', href: '/privacy' },
+    { label: 'Help & feedback', href: `${repo}/issues` },
+  ],
+};
+const {
+  title = 'Example: a little app for your Mac',
+  description = 'One sentence about what it does for you.',
+} = Astro.props;
+---
+
+<Page site={site} title={title} description={description}>
+  <slot />
+  <Fragment slot="credits">Free and open source.</Fragment>
+</Page>

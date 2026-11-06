@@ -1,0 +1,18 @@
+---
+interface Props {
+  /** Answers may contain inline HTML such as links. */
+  items: { q: string; a: string }[];
+  /** Open the first answer by default. */
+  openFirst?: boolean;
+}
+const { items, openFirst = false } = Astro.props;
+---
+
+<div class="faq-list">
+  {items.map((item, index) => (
+    <details open={openFirst && index === 0}>
+      <summary>{item.q}</summary>
+      <p set:html={item.a} />
+    </details>
+  ))}
+</div>

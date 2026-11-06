@@ -1,0 +1,11 @@
+/* This site's colours. Everything else comes from the kit. */
+:root {
+  --accent: #0c7566;
+  --accent-hover: #095f53;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-auto-dark] {
+    --accent: #8fd3c8;
+    --accent-hover: #a9e2d8;
+  }
+}

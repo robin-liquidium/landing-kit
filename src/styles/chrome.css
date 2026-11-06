@@ -1,0 +1,355 @@
+@font-face {
+  font-family: 'Satoma Sans Fallback';
+  src: local('Arial');
+  font-weight: 100 500;
+  size-adjust: 95.79%;
+  ascent-override: 99.17%;
+  descent-override: 26.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Satoma Sans Fallback';
+  src: local('Arial Bold');
+  font-weight: 600 900;
+  size-adjust: 90.48%;
+  ascent-override: 104.99%;
+  descent-override: 27.63%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Satoma Sans';
+  src: url('../fonts/satoma-sans-400-latin.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC,
+    U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030,
+    U+2039-203A, U+2044, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: 'Satoma Sans';
+  src: url('../fonts/satoma-sans-400-latin-ext.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-0125, U+0128-0130, U+0134-0137, U+0139-0148, U+014A-0151,
+    U+0154-0165, U+0168-017E, U+018F, U+0192, U+01CD-01CE, U+01E6-01EB,
+    U+01FC-01FD, U+0218-021B, U+0232-0233, U+0259, U+02C7, U+02D8-02D9, U+02DB,
+    U+02DD, U+0394, U+03A9, U+03BC, U+03C0, U+1E80-1E85, U+1EBC-1EBD,
+    U+1EF2-1EF3, U+1EF8-1EF9, U+2074, U+20A8, U+20B9-20BA, U+20BD, U+2113,
+    U+2126, U+212E, U+2202, U+2206, U+220F, U+2211, U+2215, U+221A, U+221E,
+    U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+A732, U+FB01;
+}
+@font-face {
+  font-family: 'Satoma Sans';
+  src: url('../fonts/satoma-sans-500-latin.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC,
+    U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030,
+    U+2039-203A, U+2044, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: 'Satoma Sans';
+  src: url('../fonts/satoma-sans-500-latin-ext.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-0125, U+0128-0130, U+0134-0137, U+0139-0148, U+014A-0151,
+    U+0154-0165, U+0168-017E, U+018F, U+0192, U+01CD-01CE, U+01E6-01EB,
+    U+01FC-01FD, U+0218-021B, U+0232-0233, U+0259, U+02C7, U+02D8-02D9, U+02DB,
+    U+02DD, U+0394, U+03A9, U+03BC, U+03C0, U+1E80-1E85, U+1EBC-1EBD,
+    U+1EF2-1EF3, U+1EF8-1EF9, U+2074, U+20A8, U+20B9-20BA, U+20BD, U+2113,
+    U+2126, U+212E, U+2202, U+2206, U+220F, U+2211, U+2215, U+221A, U+221E,
+    U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+A732, U+FB01;
+}
+@font-face {
+  font-family: 'Satoma Sans';
+  src: url('../fonts/satoma-sans-600-latin.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC,
+    U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030,
+    U+2039-203A, U+2044, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: 'Satoma Sans';
+  src: url('../fonts/satoma-sans-600-latin-ext.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-0125, U+0128-0130, U+0134-0137, U+0139-0148, U+014A-0151,
+    U+0154-0165, U+0168-017E, U+018F, U+0192, U+01CD-01CE, U+01E6-01EB,
+    U+01FC-01FD, U+0218-021B, U+0232-0233, U+0259, U+02C7, U+02D8-02D9, U+02DB,
+    U+02DD, U+0394, U+03A9, U+03BC, U+03C0, U+1E80-1E85, U+1EBC-1EBD,
+    U+1EF2-1EF3, U+1EF8-1EF9, U+2074, U+20A8, U+20B9-20BA, U+20BD, U+2113,
+    U+2126, U+212E, U+2202, U+2206, U+220F, U+2211, U+2215, U+221A, U+221E,
+    U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+A732, U+FB01;
+}
+/*
+  Tokens. Override any of them in your site's stylesheet:
+    :root { --accent: #0a66e4; }
+    @media (prefers-color-scheme: dark) { :root[data-auto-dark] { … } }
+*/
+:root {
+  --bg: #f6f5f1;
+  --ink: #131824;
+  --muted: #5f6573;
+  --line: #dfddd6;
+  --accent: #0a66e4;
+  --accent-hover: #0857c4;
+  --on-accent: #ffffff;
+  --code: #eeede7;
+  --font-sans: 'Satoma Sans', 'Satoma Sans Fallback', sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+  --shell: 1152px;
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  color: var(--ink);
+  background: var(--bg);
+}
+:root[data-auto-dark] {
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-auto-dark] {
+    --bg: #0c1018;
+    --ink: #eef0f3;
+    --muted: #98a0ae;
+    --line: #232a38;
+    --accent: #6aa8ff;
+    --accent-hover: #8dbcff;
+    --on-accent: #0c1018;
+    --code: #151b27;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 32px;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Layout chrome */
+.rb-shell {
+  max-width: var(--shell);
+  margin: auto;
+  padding: 0 40px;
+}
+.rb-header {
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.rb-header a,
+.rb-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+.rb-header a:hover,
+.rb-footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.rb-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+}
+.rb-header .rb-brand:hover {
+  text-decoration: none;
+}
+.rb-brand img {
+  margin-left: -4px;
+  border-radius: 22%;
+}
+.rb-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 14px;
+}
+.rb-header .rb-cta {
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 500;
+  transition: background-color 0.15s;
+}
+.rb-header .rb-cta:hover {
+  background: var(--accent-hover);
+  text-decoration: none;
+}
+.rb-footer {
+  padding: 0 0 36px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.rb-footer a {
+  color: var(--ink);
+}
+.rb-footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+.rb-footer-links {
+  display: flex;
+  gap: 24px;
+}
+.rb-credits {
+  margin: 20px 0 0;
+  font-size: 12px;
+}
+.rb-skip {
+  position: absolute;
+  left: 16px;
+  top: -80px;
+  z-index: 10;
+  padding: 12px;
+  background: var(--bg);
+  color: var(--ink);
+}
+.rb-skip:focus {
+  top: 16px;
+}
+
+/* Donations */
+.rb-support {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 48px;
+  padding: 40px 0 48px;
+  border-top: 1px solid var(--line);
+}
+.rb-support h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.rb-support p {
+  margin: 8px 0 0;
+  max-width: 30ch;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.rb-wallets {
+  border-top: 1px solid var(--line);
+}
+.rb-wallet {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) 2rem;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.rb-wallet span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.rb-wallet code {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.rb-wallet button {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+.rb-wallet button:hover {
+  background: var(--code);
+  color: var(--ink);
+}
+.rb-wallet svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.rb-check,
+[data-copied] .rb-copy {
+  display: none;
+}
+[data-copied] .rb-check {
+  display: block;
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .rb-shell {
+    padding: 0 16px;
+  }
+  .rb-header {
+    height: 72px;
+  }
+  .rb-nav {
+    gap: 16px;
+    font-size: 13px;
+  }
+  .rb-support {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

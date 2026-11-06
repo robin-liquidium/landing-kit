@@ -1,0 +1,21 @@
+{
+  "name": "landing-template",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "bun run build && wrangler dev",
+    "check": "astro check",
+    "deploy": "bun run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@robin-build/landing-kit": "workspace:*",
+    "astro": "7.3.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "typescript": "6",
+    "wrangler": "4.154.0"
+  }
+}

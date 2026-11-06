@@ -1,0 +1,40 @@
+{
+  "name": "@robin-build/landing-kit",
+  "version": "0.1.0",
+  "description": "Shared layout, design and footer for robin.build landing pages.",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    "./Page.astro": "./src/Page.astro",
+    "./components/*": "./src/components/*",
+    "./chrome.css": "./src/styles/chrome.css",
+    "./design.css": "./src/styles/design.css",
+    "./projects": "./src/projects.ts"
+  },
+  "workspaces": [
+    "template"
+  ],
+  "scripts": {
+    "new-site": "bun scripts/new-site.ts",
+    "check": "bun check --no-script && cd template && bun run check",
+    "lint": "bun lint --no-script",
+    "fmt": "bun fmt --no-script && prettier --write 'src/**/*.astro' 'template/src/**/*.astro'",
+    "fmt:check": "bun fmt --check --no-script && prettier --check 'src/**/*.astro' 'template/src/**/*.astro'",
+    "build": "cd template && bun run build"
+  },
+  "peerDependencies": {
+    "astro": ">=7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@types/bun": "^1.4.4",
+    "astro": "7.3.2",
+    "bun": "1.4.4-canary.20261102.1",
+    "prettier": "3.9.6",
+    "prettier-plugin-astro": "1.0.0",
+    "typescript": "6"
+  }
+}

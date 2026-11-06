@@ -1,0 +1,119 @@
+---
+import regularFont from './fonts/satoma-sans-400-latin.woff2?url';
+import headingFont from './fonts/satoma-sans-600-latin.woff2?url';
+import Support from './components/Support.astro';
+import { otherProjects, type Site } from './projects';
+import './styles/chrome.css';
+
+interface Props {
+  site: Site;
+  title: string;
+  description: string;
+}
+const { site, title, description } = Astro.props;
+const others = otherProjects(site.id);
+const dark = site.dark ?? true;
+---
+
+<!doctype html>
+<html lang="en" data-auto-dark={dark ? '' : undefined}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {dark && site.themeColor.dark ? (
+      <>
+        <meta
+          name="theme-color"
+          content={site.themeColor.light}
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content={site.themeColor.dark}
+          media="(prefers-color-scheme: dark)"
+        />
+      </>
+    ) : (
+      <meta name="theme-color" content={site.themeColor.light} />
+    )}
+    <link rel="icon" href={site.icon} />
+    <link rel="apple-touch-icon" href={site.icon} />
+    <link
+      rel="preload"
+      href={regularFont}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={headingFont}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {Astro.site && (
+      <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    )}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {site.ogImage && <meta property="og:image" content={site.ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="rb-skip" href="#main">
+      Skip to content
+    </a>
+    <div class="rb-shell">
+      <header class="rb-header">
+        <a class="rb-brand" href="/" aria-label={`${site.name} home`}>
+          <img src={site.icon} width="34" height="34" alt="" />
+          <span>{site.name}</span>
+        </a>
+        <nav class="rb-nav" aria-label="Main navigation">
+          {site.nav?.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+          {site.cta && (
+            <a class="rb-cta" href={site.cta.href}>
+              {site.cta.label}
+            </a>
+          )}
+        </nav>
+      </header>
+      <slot />
+      <footer class="rb-footer">
+        {(site.support ?? true) && <Support name={site.name} />}
+        <div class="rb-footer-row">
+          <span>
+            Made by <a href="https://robin.build">Robin</a>. Also behind{' '}
+            {others.map((project, index) => (
+              <>
+                <a href={project.url}>{project.name}</a>
+                {index < others.length - 2
+                  ? ', '
+                  : index === others.length - 2
+                    ? ' and '
+                    : '.'}
+              </>
+            ))}
+          </span>
+          <div class="rb-footer-links">
+            {site.footerLinks?.map((link) => (
+              <a href={link.href}>{link.label}</a>
+            ))}
+          </div>
+        </div>
+        {Astro.slots.has('credits') && (
+          <p class="rb-credits">
+            <slot name="credits" />
+          </p>
+        )}
+      </footer>
+    </div>
+  </body>
+</html>

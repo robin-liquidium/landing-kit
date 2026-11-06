@@ -1,0 +1,338 @@
+/*
+  The shared landing page design: hero, buttons, numbers, feature cards,
+  questions, closing call and text pages. Import it after chrome.css (the
+  Page layout loads chrome.css for you):
+    import '@robin-build/landing-kit/design.css';
+*/
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+/* Hero */
+.hero {
+  text-align: center;
+  padding-top: 64px;
+}
+.eyebrow {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+.hero > .eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+h1 {
+  font-size: clamp(56px, 11vw, 124px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 24px 0 26px;
+}
+h2 {
+  font-size: clamp(36px, 5vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 14px 0 0;
+}
+h3 {
+  font-size: 20px;
+  margin: 12px 0 10px;
+}
+em {
+  font-style: normal;
+  color: var(--accent);
+}
+.intro {
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+  margin: 32px 0 16px;
+}
+.button {
+  min-height: 52px;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0 26px;
+  font-size: 15px;
+  font-weight: 500;
+  transition:
+    background-color 0.15s,
+    transform 0.15s;
+}
+.button:active {
+  transform: scale(0.98);
+}
+.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.primary:hover {
+  background: var(--accent-hover);
+  text-decoration: none;
+}
+.text-link {
+  font-size: 15px;
+}
+.small {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* Numbers */
+.stats {
+  padding: 128px 0 40px;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 48px 0 18px;
+  border-top: 1px solid var(--line);
+}
+.stats-grid > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 26px 24px 0;
+  border-left: 1px solid var(--line);
+}
+.stats-grid > div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+.stats dd {
+  margin: 0;
+  font-size: clamp(36px, 4.4vw, 52px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.stats dt {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 22ch;
+}
+
+/* How */
+.how {
+  padding: 104px 0 96px;
+}
+.center {
+  text-align: center;
+}
+.center p {
+  max-width: 34em;
+  margin: 18px auto 0;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+/* Features */
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.features article {
+  background: var(--bg);
+  padding: 36px 36px 40px;
+}
+.feature-number {
+  font-size: 13px;
+  color: var(--muted);
+}
+.features p {
+  margin: 0;
+  max-width: 34em;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* FAQ */
+.faq {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  padding: 112px 0 40px;
+}
+.faq h2 {
+  margin: 0;
+}
+.faq-list details {
+  border-top: 1px solid var(--line);
+}
+.faq-list details:last-child {
+  border-bottom: 1px solid var(--line);
+}
+summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+summary::after {
+  content: '+';
+  flex: none;
+  font-weight: 400;
+  color: var(--muted);
+  transition: transform 0.2s;
+}
+details[open] summary::after {
+  transform: rotate(45deg);
+}
+details p {
+  margin: -6px 0 24px;
+  max-width: 38em;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* Closing */
+.install {
+  text-align: center;
+  padding: 112px 0 104px;
+}
+.install h2 {
+  font-size: clamp(40px, 7vw, 76px);
+  letter-spacing: -0.025em;
+  margin: 0 0 34px;
+}
+.install .small {
+  margin: 18px 0 0;
+}
+
+/* Text pages */
+.prose {
+  max-width: 700px;
+  min-height: 56vh;
+  margin: 64px auto 104px;
+}
+.prose h1 {
+  font-size: clamp(44px, 8vw, 64px);
+  margin-top: 0;
+}
+.prose h2 {
+  font-size: 26px;
+  margin-top: 40px;
+}
+.prose p,
+.prose li {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.prose a {
+  color: var(--accent);
+}
+.release {
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+.release-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+.release time {
+  font-size: 14px;
+  color: var(--muted);
+}
+.notfound {
+  text-align: center;
+  padding-top: 8vh;
+}
+@media (max-width: 860px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 36px;
+  }
+  .stats-grid > div:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .faq {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 32px;
+  }
+  .intro {
+    font-size: 17px;
+  }
+  .desktop {
+    display: none;
+  }
+  .actions {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .stats {
+    padding-top: 80px;
+  }
+  .how {
+    padding: 72px 0 64px;
+  }
+  .features {
+    grid-template-columns: 1fr;
+  }
+  .features article {
+    padding: 26px 24px 28px;
+  }
+  .faq {
+    padding-top: 72px;
+  }
+  .install {
+    padding: 80px 0 72px;
+  }
+}
