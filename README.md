@@ -3,6 +3,7 @@
 The shared layout, design and footer behind the robin.build landing pages:
 [Dayline](https://dayline.robin.build), [Stillmic](https://stillmic.robin.build),
 [Redmi Buds Bar](https://buds.robin.build) and [Satoma Sans](https://satoma.robin.build).
+The footer also links to [Fungus Inc.](https://fungus.build).
 
 Each site is a small [Astro](https://astro.build) project that installs this kit
 at a tagged version. The kit gives it:

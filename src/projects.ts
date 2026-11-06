@@ -4,6 +4,7 @@ export const projects = [
   { id: 'stillmic', name: 'Stillmic', url: 'https://stillmic.robin.build' },
   { id: 'buds', name: 'Redmi Buds Bar', url: 'https://buds.robin.build' },
   { id: 'satoma', name: 'Satoma Sans', url: 'https://satoma.robin.build' },
+  { id: 'fungus', name: 'Fungus Inc.', url: 'https://fungus.build' },
 ] as const;
 
 export type ProjectId = (typeof projects)[number]['id'];
