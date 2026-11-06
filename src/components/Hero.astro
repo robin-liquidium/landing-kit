@@ -1,5 +1,6 @@
 ---
 import DownloadIcon from './DownloadIcon.astro';
+import { textWidth } from '../metrics';
 import type { Link } from '../projects';
 
 interface Props {
@@ -11,8 +12,10 @@ interface Props {
   link?: Link;
   /** Short facts under the lede, such as requirements. */
   notes?: string[];
+  /** Size each line to fill the page width on wider screens. */
+  fit?: boolean;
 }
-const { lines, lede, cta, link, notes = [] } = Astro.props;
+const { lines, lede, cta, link, notes = [], fit = false } = Astro.props;
 ---
 
 <section class="rb-hero rb-shell">

@@ -257,7 +257,7 @@ video {
   margin: clamp(40px, 6vw, 72px) 0 0;
   font-family: var(--font-display);
   font-weight: var(--display-weight);
-  font-size: calc(196cqi / var(--chars));
+  font-size: calc(97cqi / var(--fit));
   line-height: 0.8;
   letter-spacing: -0.05em;
   white-space: nowrap;

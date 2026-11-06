@@ -2,6 +2,7 @@
 import regularFont from './fonts/satoma-sans-400-latin.woff2?url';
 import displayFont from './fonts/satoma-sans-600-latin.woff2?url';
 import Support from './components/Support.astro';
+import { textWidth } from './metrics';
 import { otherProjects, type Site } from './projects';
 import './styles/chrome.css';
 
@@ -170,7 +171,7 @@ const joiner = (index: number, name: string) =>
       <p
         class="rb-wordmark"
         aria-hidden="true"
-        style={`--chars: ${site.name.length}`}
+        style={`--fit: ${textWidth(site.name, -0.05)}`}
       >
         {site.name}
       </p>

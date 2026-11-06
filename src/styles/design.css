@@ -93,7 +93,14 @@
 
 /* Hero */
 .rb-hero {
+  container-type: inline-size;
   padding-top: clamp(56px, 11vh, 150px);
+}
+@container (min-width: 720px) {
+  .rb-fit .rb-line {
+    font-size: calc(98cqi / var(--fit));
+    white-space: nowrap;
+  }
 }
 .rb-hero-foot {
   display: flex;
@@ -142,7 +149,7 @@
 /* Facts */
 .rb-facts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(190px, 40%), 1fr));
   gap: 40px 32px;
   margin: 0;
 }
