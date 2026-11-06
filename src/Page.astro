@@ -102,7 +102,9 @@ const dark = site.dark ?? true;
                   ? ', '
                   : index === others.length - 2
                     ? ' and '
-                    : '.'}
+                    : project.name.endsWith('.')
+                      ? ''
+                      : '.'}
               </>
             ))}
           </span>
