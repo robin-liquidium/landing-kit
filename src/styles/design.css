@@ -17,8 +17,9 @@
 .rb-line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.06em;
-  margin-bottom: -0.06em;
+  /* Room for descenders (y, g, commas) inside the reveal mask. */
+  padding: 0.04em 0 0.22em;
+  margin: -0.04em 0 -0.22em;
 }
 .rb-line > span {
   display: inline-block;
