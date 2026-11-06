@@ -19,9 +19,12 @@ const { lines, lede, cta, link, notes = [], fit = false } = Astro.props;
 ---
 
 <section class="rb-hero rb-shell">
-  <h1 class="rb-display">
+  <h1 class:list={['rb-display', { 'rb-fit': fit }]}>
     {lines.map((line, index) => (
-      <span class="rb-line" style={`--i: ${index}`}>
+      <span
+        class="rb-line"
+        style={`--i: ${index}; --fit: ${textWidth(line, -0.045)}`}
+      >
         <span>{line}</span>
       </span>
     ))}

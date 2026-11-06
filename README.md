@@ -8,14 +8,28 @@ The footer also links to [Fungus Inc.](https://fungus.build).
 Each site is a small [Astro](https://astro.build) project that installs this kit
 at a tagged version. The kit gives it:
 
-- **`Page.astro`**: the document head, header, and footer with the
-  "Made by Robin. Also behind…" line and the donation addresses.
-- **`chrome.css`**: Satoma Sans, colour tokens, dark mode and the header/footer
-  styles. Loaded by `Page.astro`.
-- **`design.css`**: the shared page design: hero, buttons, numbers, feature
-  cards, questions, closing call and text pages. Optional.
-- **Components**: `Stats`, `Features`, `Faq`, `DownloadIcon`.
+- **`Page.astro`**: the document head with search and social tags,
+  structured data for the app, the header, and the footer with the
+  "Made by Robin. Also behind…" line, donation addresses and a large wordmark.
+- **`chrome.css`**: Satoma Sans, colour tokens, dark mode and the header and
+  footer styles. Loaded by `Page.astro`.
+- **`design.css`**: the shared page design. Optional.
+- **Components**, all prefixed `rb-` in CSS:
+  - `Hero`: a headline that can fill the page width (`fit`), lede, actions,
+    and a slot for the product's signature visual.
+  - `Section`: a heading with an optional intro, split or stacked.
+  - `Facts`: large numbers with labels.
+  - `FeatureList`: titled rows in two columns.
+  - `MediaRows`: alternating screenshot and text rows.
+  - `Faq`: questions with FAQ structured data for search engines.
+  - `Closing`: a closing line and a full-width download bar.
+  - `Support`, `DownloadIcon`.
 - **`projects.ts`**: every project and the donation addresses, in one place.
+
+Each site adds one signature visual of its own (Stillmic's listening demo,
+Buds' popover over rings, Dayline's dawn), sets its colours, and composes the
+page from these components. Add `@astrojs/sitemap` and a `robots.txt`, as the
+template does.
 
 ## Start a new site
 
