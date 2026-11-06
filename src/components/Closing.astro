@@ -6,7 +6,7 @@ interface Props {
   lines: string[];
   href: string;
   label: string;
-  /** Short facts shown on the download bar, such as version and size. */
+  /** Short facts under the button, such as version and requirements. */
   details?: string[];
 }
 const { lines, href, label, details = [] } = Astro.props;
@@ -21,16 +21,18 @@ const { lines, href, label, details = [] } = Astro.props;
       </span>
     ))}
   </h2>
-  <a class="rb-bar" href={href}>
-    <span class="rb-bar-label">{label}</span>
-    <span class="rb-bar-details">
-      {details.map((detail) => (
-        <span>{detail}</span>
-      ))}
-    </span>
-    <span class="rb-bar-icon">
+  <div class="rb-actions">
+    <a class="rb-button" href={href}>
       <DownloadIcon />
-    </span>
-  </a>
+      {label}
+    </a>
+  </div>
+  {details.length > 0 && (
+    <ul class="rb-notes">
+      {details.map((detail) => (
+        <li>{detail}</li>
+      ))}
+    </ul>
+  )}
   <slot />
 </section>

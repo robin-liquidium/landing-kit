@@ -10,7 +10,7 @@ interface Props {
   cta: Link;
   /** A quieter second action. */
   link?: Link;
-  /** Short facts under the lede, such as requirements. */
+  /** Short facts under the actions, such as requirements. */
   notes?: string[];
   /** Size each line to fill the page width on wider screens. */
   fit?: boolean;
@@ -34,28 +34,24 @@ const tracking = (line: string) =>
       </span>
     ))}
   </h1>
-  <div class="rb-hero-foot">
-    <div>
-      <p class="rb-lede">{lede}</p>
-      {notes.length > 0 && (
-        <ul class="rb-notes">
-          {notes.map((note) => (
-            <li>{note}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-    <div class="rb-actions">
-      <a class="rb-button" href={cta.href}>
-        <DownloadIcon />
-        {cta.label}
+  <p class="rb-lede">{lede}</p>
+  <div class="rb-actions">
+    <a class="rb-button" href={cta.href}>
+      <DownloadIcon />
+      {cta.label}
+    </a>
+    {link && (
+      <a class="rb-quiet" href={link.href}>
+        {link.label}
       </a>
-      {link && (
-        <a class="rb-quiet" href={link.href}>
-          {link.label}
-        </a>
-      )}
-    </div>
+    )}
   </div>
+  {notes.length > 0 && (
+    <ul class="rb-notes">
+      {notes.map((note) => (
+        <li>{note}</li>
+      ))}
+    </ul>
+  )}
   <slot />
 </section>

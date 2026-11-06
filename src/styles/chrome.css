@@ -113,7 +113,7 @@
   --font-display: var(--font-sans);
   --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
   --display-weight: 600;
-  --shell: 1440px;
+  --shell: 1200px;
   --gutter: clamp(20px, 4vw, 56px);
   font-family: var(--font-sans);
   font-synthesis: none;
@@ -219,7 +219,7 @@ video {
 /* Footer */
 .rb-footer {
   container-type: inline-size;
-  padding-top: clamp(64px, 10vw, 140px);
+  padding-top: clamp(120px, 16vw, 220px);
   font-size: 15px;
   color: var(--muted);
 }
@@ -261,7 +261,7 @@ video {
   line-height: 0.8;
   letter-spacing: -0.05em;
   white-space: nowrap;
-  color: var(--fg);
+  color: color-mix(in srgb, var(--fg) 7%, var(--bg));
   overflow: hidden;
   padding-bottom: 0.06em;
   user-select: none;
@@ -272,7 +272,7 @@ video {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
   gap: 24px 48px;
-  margin-bottom: clamp(56px, 8vw, 96px);
+  margin-bottom: clamp(64px, 9vw, 112px);
   padding: clamp(24px, 3vw, 36px);
   border-radius: 24px;
   background: var(--surface);
