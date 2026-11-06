@@ -15,14 +15,14 @@ at a tagged version. The kit gives it:
   footer styles. Loaded by `Page.astro`.
 - **`design.css`**: the shared page design. Optional.
 - **Components**, all prefixed `rb-` in CSS:
-  - `Hero`: a headline that can fill the page width (`fit`), lede, actions,
+  - `Hero`: a centred headline (or one that fills the page width with `fit`), lede, actions,
     and a slot for the product's signature visual.
   - `Section`: a heading with an optional intro, split or stacked.
   - `Facts`: large numbers with labels.
   - `FeatureList`: titled rows in two columns.
   - `MediaRows`: alternating screenshot and text rows.
   - `Faq`: questions with FAQ structured data for search engines.
-  - `Closing`: a closing line and a full-width download bar.
+  - `Closing`: a centred closing line with a download button.
   - `Support`, `DownloadIcon`.
 - **`projects.ts`**: every project and the donation addresses, in one place.
 
