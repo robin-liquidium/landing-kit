@@ -1,6 +1,6 @@
 {
   "name": "@robin-build/landing-kit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shared layout, design and footer for robin.build landing pages.",
   "license": "MIT",
   "type": "module",

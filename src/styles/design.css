@@ -16,6 +16,7 @@
 }
 .rb-line {
   display: block;
+  letter-spacing: var(--track, -0.045em);
   overflow: hidden;
   /* Room for descenders (y, g, commas) inside the reveal mask. */
   padding: 0.04em 0 0.22em;

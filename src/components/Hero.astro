@@ -16,6 +16,11 @@ interface Props {
   fit?: boolean;
 }
 const { lines, lede, cta, link, notes = [], fit = false } = Astro.props;
+// Long lines are set smaller, so they need looser tracking than short ones.
+const tracking = (line: string) =>
+  Math.round(
+    Math.max(-0.045, Math.min(-0.012, -0.06 + line.length * 0.0014)) * 1000,
+  ) / 1000;
 ---
 
 <section class="rb-hero rb-shell">
@@ -23,7 +28,7 @@ const { lines, lede, cta, link, notes = [], fit = false } = Astro.props;
     {lines.map((line, index) => (
       <span
         class="rb-line"
-        style={`--i: ${index}; --fit: ${textWidth(line, -0.045)}`}
+        style={`--i: ${index}; --track: ${tracking(line)}em; --fit: ${textWidth(line, tracking(line))}`}
       >
         <span>{line}</span>
       </span>
