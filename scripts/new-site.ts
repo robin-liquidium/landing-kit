@@ -1,7 +1,7 @@
 // Copies the template into a new folder and points it at the released kit.
 // Usage: bun run new-site ../my-app/website
 import { cp, readFile, writeFile } from 'node:fs/promises';
-import { basename, dirname, join, resolve } from 'node:path';
+import { basename, dirname, join, resolve, sep } from 'node:path';
 
 const target = process.argv[2];
 if (!target) {
@@ -14,7 +14,12 @@ await cp(join(root, 'template'), destination, {
   recursive: true,
   errorOnExist: true,
   force: false,
-  filter: (path) => !/node_modules|dist|\.astro|\.wrangler/.test(path),
+  filter: (path) =>
+    !path
+      .split(sep)
+      .some((part) =>
+        ['node_modules', 'dist', '.astro', '.wrangler'].includes(part),
+      ),
 });
 
 interface PackageJson {
