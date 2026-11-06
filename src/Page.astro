@@ -16,7 +16,11 @@ interface Props {
 const { site, title, description, noindex = false } = Astro.props;
 const others = otherProjects(site.id);
 const dark = site.dark ?? true;
-const canonical = new URL(Astro.url.pathname, site.url).href;
+// With `build.format: 'file'` the pathname carries the generated filename.
+const path = Astro.url.pathname
+  .replace(/\/index\.html$/, '/')
+  .replace(/\.html$/, '');
+const canonical = new URL(path || '/', site.url).href;
 const author = { '@type': 'Person', name: 'Robin', url: 'https://robin.build' };
 const structured = site.app
   ? {
