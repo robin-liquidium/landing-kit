@@ -24,6 +24,8 @@ bun run new-site ../my-app/website
 ```
 
 This copies [`template/`](template) and points it at the current kit release.
+The copy includes the lint, format and type-check setup, and a CI workflow in
+`.github/workflows/website.yml` to move to the repository's root.
 Then set the site in `src/layouts/Site.astro`, its colours in
 `src/styles/site.css`, and its domain in `wrangler.jsonc` and
 `astro.config.mjs`.

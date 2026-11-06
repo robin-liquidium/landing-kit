@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "new-site": "bun scripts/new-site.ts",
-    "check": "bun check --no-script && cd template && bun run check",
+    "check": "bun check --no-script && cd template && bunx astro check",
     "lint": "bun lint --no-script",
     "fmt": "bun fmt --no-script && prettier --write 'src/**/*.astro' 'template/src/**/*.astro'",
     "fmt:check": "bun fmt --check --no-script && prettier --check 'src/**/*.astro' 'template/src/**/*.astro'",

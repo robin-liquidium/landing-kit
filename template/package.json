@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "bun run build && wrangler dev",
-    "check": "astro check",
+    "check": "bun check --no-script && astro check",
+    "lint": "bun lint --no-script",
+    "fmt": "bun fmt --no-script && prettier --write 'src/**/*.astro'",
+    "fmt:check": "bun fmt --check --no-script && prettier --check 'src/**/*.astro'",
     "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
@@ -16,6 +19,9 @@
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "typescript": "6",
-    "wrangler": "4.154.0"
+    "wrangler": "4.154.0",
+    "bun": "1.4.4-canary.20261102.1",
+    "prettier": "3.9.6",
+    "prettier-plugin-astro": "1.0.0"
   }
 }

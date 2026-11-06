@@ -1,0 +1,22 @@
+# Move this file to the repository's .github/workflows/ folder.
+name: Website
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+      - run: bun install --frozen-lockfile
+      - run: bun run fmt:check
+      - run: bun run lint
+      - run: bun run check
+      - run: bun run build
