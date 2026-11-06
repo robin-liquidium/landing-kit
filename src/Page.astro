@@ -1,6 +1,6 @@
 ---
 import regularFont from './fonts/satoma-sans-400-latin.woff2?url';
-import headingFont from './fonts/satoma-sans-600-latin.woff2?url';
+import displayFont from './fonts/satoma-sans-600-latin.woff2?url';
 import Support from './components/Support.astro';
 import { otherProjects, type Site } from './projects';
 import './styles/chrome.css';
@@ -9,10 +9,47 @@ interface Props {
   site: Site;
   title: string;
   description: string;
+  /** Hide the page from search engines, e.g. on 404 pages. */
+  noindex?: boolean;
 }
-const { site, title, description } = Astro.props;
+const { site, title, description, noindex = false } = Astro.props;
 const others = otherProjects(site.id);
 const dark = site.dark ?? true;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const author = { '@type': 'Person', name: 'Robin', url: 'https://robin.build' };
+const structured = site.app
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: site.name,
+      description,
+      url: site.url,
+      operatingSystem: site.app.operatingSystem,
+      applicationCategory: site.app.category,
+      downloadUrl: site.app.downloadUrl,
+      softwareVersion: site.app.version,
+      screenshot: site.app.screenshot
+        ? new URL(site.app.screenshot, site.url).href
+        : undefined,
+      isAccessibleForFree: true,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      author,
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: site.name,
+      url: site.url,
+      author,
+    };
+const joiner = (index: number, name: string) =>
+  index < others.length - 2
+    ? ', '
+    : index === others.length - 2
+      ? ' and '
+      : name.endsWith('.')
+        ? ''
+        : '.';
 ---
 
 <!doctype html>
@@ -22,6 +59,8 @@ const dark = site.dark ?? true;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
     {dark && site.themeColor.dark ? (
       <>
         <meta
@@ -51,75 +90,90 @@ const dark = site.dark ?? true;
         />
         <link
           rel="preload"
-          href={headingFont}
+          href={displayFont}
           as="font"
           type="font/woff2"
           crossorigin
         />
       </>
     )}
-    {Astro.site && (
-      <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-    )}
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    {site.ogImage && <meta property="og:image" content={site.ogImage} />}
+    <meta property="og:url" content={canonical} />
+    {site.ogImage && (
+      <>
+        <meta property="og:image" content={site.ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        {site.ogImageAlt && (
+          <meta property="og:image:alt" content={site.ogImageAlt} />
+        )}
+        <meta name="twitter:image" content={site.ogImage} />
+      </>
+    )}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structured)}
+    ></script>
     <slot name="head" />
   </head>
   <body>
     <a class="rb-skip" href="#main">
       Skip to content
     </a>
-    <div class="rb-shell">
-      <header class="rb-header">
-        <a class="rb-brand" href="/" aria-label={`${site.name} home`}>
-          <img src={site.icon} width="34" height="34" alt="" />
-          <span>{site.name}</span>
+    <header class="rb-header rb-shell">
+      <a class="rb-brand" href="/" aria-label={`${site.name} home`}>
+        <img src={site.icon} width="28" height="28" alt="" />
+        <span>{site.name}</span>
+      </a>
+      <nav class="rb-nav" aria-label="Main navigation">
+        {site.nav?.map((link) => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+      </nav>
+      {site.cta && (
+        <a class="rb-cta" href={site.cta.href}>
+          {site.cta.label}
         </a>
-        <nav class="rb-nav" aria-label="Main navigation">
-          {site.nav?.map((link) => (
+      )}
+    </header>
+    <slot />
+    <footer class="rb-footer rb-shell">
+      {(site.support ?? true) && <Support name={site.name} />}
+      <div class="rb-footer-row">
+        <p>
+          Made by <a href="https://robin.build">Robin</a>. Also behind{' '}
+          {others.map((project, index) => (
+            <>
+              <a href={project.url}>{project.name}</a>
+              {joiner(index, project.name)}
+            </>
+          ))}
+        </p>
+        <nav class="rb-footer-links" aria-label="Footer">
+          {site.footerLinks?.map((link) => (
             <a href={link.href}>{link.label}</a>
           ))}
-          {site.cta && (
-            <a class="rb-cta" href={site.cta.href}>
-              {site.cta.label}
-            </a>
-          )}
         </nav>
-      </header>
-      <slot />
-      <footer class="rb-footer">
-        {(site.support ?? true) && <Support name={site.name} />}
-        <div class="rb-footer-row">
-          <span>
-            Made by <a href="https://robin.build">Robin</a>. Also behind{' '}
-            {others.map((project, index) => (
-              <>
-                <a href={project.url}>{project.name}</a>
-                {index < others.length - 2
-                  ? ', '
-                  : index === others.length - 2
-                    ? ' and '
-                    : project.name.endsWith('.')
-                      ? ''
-                      : '.'}
-              </>
-            ))}
-          </span>
-          <div class="rb-footer-links">
-            {site.footerLinks?.map((link) => (
-              <a href={link.href}>{link.label}</a>
-            ))}
-          </div>
-        </div>
-        {Astro.slots.has('credits') && (
-          <p class="rb-credits">
-            <slot name="credits" />
-          </p>
-        )}
-      </footer>
-    </div>
+      </div>
+      {Astro.slots.has('credits') && (
+        <p class="rb-credits">
+          <slot name="credits" />
+        </p>
+      )}
+      <p
+        class="rb-wordmark"
+        aria-hidden="true"
+        style={`--chars: ${site.name.length}`}
+      >
+        {site.name}
+      </p>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,50 @@
+---
+import DownloadIcon from './DownloadIcon.astro';
+import type { Link } from '../projects';
+
+interface Props {
+  /** The headline, one entry per line. */
+  lines: string[];
+  lede: string;
+  cta: Link;
+  /** A quieter second action. */
+  link?: Link;
+  /** Short facts under the lede, such as requirements. */
+  notes?: string[];
+}
+const { lines, lede, cta, link, notes = [] } = Astro.props;
+---
+
+<section class="rb-hero rb-shell">
+  <h1 class="rb-display">
+    {lines.map((line, index) => (
+      <span class="rb-line" style={`--i: ${index}`}>
+        <span>{line}</span>
+      </span>
+    ))}
+  </h1>
+  <div class="rb-hero-foot">
+    <div>
+      <p class="rb-lede">{lede}</p>
+      {notes.length > 0 && (
+        <ul class="rb-notes">
+          {notes.map((note) => (
+            <li>{note}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+    <div class="rb-actions">
+      <a class="rb-button" href={cta.href}>
+        <DownloadIcon />
+        {cta.label}
+      </a>
+      {link && (
+        <a class="rb-quiet" href={link.href}>
+          {link.label}
+        </a>
+      )}
+    </div>
+  </div>
+  <slot />
+</section>

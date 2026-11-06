@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  intro?: string;
+  id?: string;
+  /** split: heading left, content right. stack: heading above content. */
+  layout?: 'split' | 'stack';
+  /** Extra classes for site-specific styling. */
+  class?: string;
+}
+const { title, intro, id, layout = 'split', class: extra } = Astro.props;
+---
+
+<section class:list={['rb-section rb-shell', `rb-${layout}`, extra]} id={id}>
+  <div class="rb-section-head">
+    <h2>{title}</h2>
+    {intro && <p>{intro}</p>}
+  </div>
+  <div class="rb-section-body">
+    <slot />
+  </div>
+</section>

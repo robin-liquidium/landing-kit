@@ -1,11 +1,13 @@
 ---
 interface Props {
   items: { value: string; label: string }[];
+  /** A footnote, such as how the numbers were measured. */
+  note?: string;
 }
-const { items } = Astro.props;
+const { items, note } = Astro.props;
 ---
 
-<dl class="stats-grid">
+<dl class="rb-facts">
   {items.map((item) => (
     <div>
       <dt>{item.label}</dt>
@@ -13,3 +15,4 @@ const { items } = Astro.props;
     </div>
   ))}
 </dl>
+{note && <p class="rb-footnote">{note}</p>}

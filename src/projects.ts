@@ -21,21 +21,36 @@ export interface Link {
   href: string;
 }
 
+/** Facts about the app, for search engines (schema.org SoftwareApplication). */
+export interface App {
+  /** e.g. "macOS 15 or later" */
+  operatingSystem: string;
+  /** schema.org category, e.g. "UtilitiesApplication" */
+  category: string;
+  downloadUrl: string;
+  version?: string;
+  /** Path or URL of a screenshot. */
+  screenshot?: string;
+}
+
 export interface Site {
   /** Which project this is, so the footer can link to the others. */
   id: ProjectId | (string & {});
   name: string;
+  /** Absolute origin, e.g. https://stillmic.robin.build */
+  url: string;
   /** Path of the square app icon in `public/`. */
   icon: string;
   /** Background colours for the browser chrome. */
   themeColor: { light: string; dark?: string };
-  /** Absolute URL of the social preview image. */
+  /** Absolute URL of a 1200 x 630 social preview image. */
   ogImage?: string;
+  ogImageAlt?: string;
   /** Links in the header. */
   nav?: Link[];
-  /** A pill-shaped link at the end of the header, such as Download. */
+  /** A link at the end of the header, such as Download. */
   cta?: Link;
-  /** Links at the end of the footer row. */
+  /** Links in the footer. */
   footerLinks?: Link[];
   /** Show the donation addresses in the footer. Defaults to true. */
   support?: boolean;
@@ -43,6 +58,8 @@ export interface Site {
   dark?: boolean;
   /** Preload Satoma Sans. Set to false if the site uses other fonts. Defaults to true. */
   satoma?: boolean;
+  /** Describe the app to search engines. */
+  app?: App;
 }
 
 export function otherProjects(id: string) {

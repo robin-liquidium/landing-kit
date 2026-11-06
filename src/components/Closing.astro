@@ -1,0 +1,36 @@
+---
+import DownloadIcon from './DownloadIcon.astro';
+
+interface Props {
+  /** The closing line, one entry per line. */
+  lines: string[];
+  href: string;
+  label: string;
+  /** Short facts shown on the download bar, such as version and size. */
+  details?: string[];
+}
+const { lines, href, label, details = [] } = Astro.props;
+---
+
+<section class="rb-closing rb-shell">
+  <h2 class="rb-closing-title">
+    {lines.map((line) => (
+      <span>
+        {line}
+        <br />
+      </span>
+    ))}
+  </h2>
+  <a class="rb-bar" href={href}>
+    <span class="rb-bar-label">{label}</span>
+    <span class="rb-bar-details">
+      {details.map((detail) => (
+        <span>{detail}</span>
+      ))}
+    </span>
+    <span class="rb-bar-icon">
+      <DownloadIcon />
+    </span>
+  </a>
+  <slot />
+</section>

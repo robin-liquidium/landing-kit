@@ -8,11 +8,13 @@ import '../styles/site.css';
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 const repo = 'https://github.com/robin-liquidium/example';
 const site: Site = {
   id: 'example',
   name: 'Example',
+  url: 'https://example.robin.build',
   icon: '/icon.png',
   themeColor: { light: '#f6f5f1', dark: '#0c1018' },
   nav: [
@@ -27,10 +29,11 @@ const site: Site = {
 const {
   title = 'Example: a little app for your Mac',
   description = 'One sentence about what it does for you.',
+  noindex,
 } = Astro.props;
 ---
 
-<Page site={site} title={title} description={description}>
+<Page site={site} title={title} description={description} noindex={noindex}>
   <slot />
   <Fragment slot="credits">Free and open source.</Fragment>
 </Page>

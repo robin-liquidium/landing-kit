@@ -2,17 +2,36 @@
 interface Props {
   /** Answers may contain inline HTML such as links. */
   items: { q: string; a: string }[];
-  /** Open the first answer by default. */
-  openFirst?: boolean;
 }
-const { items, openFirst = false } = Astro.props;
+const { items } = Astro.props;
+const structured = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a.replace(/<[^>]+>/g, ''),
+    },
+  })),
+};
 ---
 
-<div class="faq-list">
-  {items.map((item, index) => (
-    <details open={openFirst && index === 0}>
-      <summary>{item.q}</summary>
+<div class="rb-faq">
+  {items.map((item) => (
+    <details>
+      <summary>
+        <span>{item.q}</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+      </summary>
       <p set:html={item.a} />
     </details>
   ))}
 </div>
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(structured)}
+></script>

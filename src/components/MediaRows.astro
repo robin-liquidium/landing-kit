@@ -1,0 +1,38 @@
+---
+interface Props {
+  /** `image` is an AVIF path; a WebP with the same name is used as fallback. */
+  items: {
+    title: string;
+    text: string;
+    image: string;
+    alt: string;
+    width: number;
+    height: number;
+  }[];
+}
+const { items } = Astro.props;
+---
+
+<div class="rb-media">
+  {items.map((item) => (
+    <article>
+      <div class="rb-media-text">
+        <h3>{item.title}</h3>
+        <p>{item.text}</p>
+      </div>
+      <figure>
+        <picture>
+          <source srcset={item.image} type="image/avif" />
+          <img
+            src={item.image.replace(/\.avif$/, '.webp')}
+            alt={item.alt}
+            width={item.width}
+            height={item.height}
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </figure>
+    </article>
+  ))}
+</div>
