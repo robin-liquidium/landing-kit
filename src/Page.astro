@@ -40,20 +40,24 @@ const dark = site.dark ?? true;
     )}
     <link rel="icon" href={site.icon} />
     <link rel="apple-touch-icon" href={site.icon} />
-    <link
-      rel="preload"
-      href={regularFont}
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href={headingFont}
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    {(site.satoma ?? true) && (
+      <>
+        <link
+          rel="preload"
+          href={regularFont}
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+        <link
+          rel="preload"
+          href={headingFont}
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+      </>
+    )}
     {Astro.site && (
       <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     )}

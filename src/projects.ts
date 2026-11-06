@@ -40,6 +40,8 @@ export interface Site {
   support?: boolean;
   /** Follow the system's dark mode. Defaults to true. */
   dark?: boolean;
+  /** Preload Satoma Sans. Set to false if the site uses other fonts. Defaults to true. */
+  satoma?: boolean;
 }
 
 export function otherProjects(id: string) {
